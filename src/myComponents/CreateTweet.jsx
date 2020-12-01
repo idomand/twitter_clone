@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 export default function CreateTweet(props) {
-  const [userTweet, setUserTweet] = useState("what is on your mind");
+  const [userTweet, setUserTweet] = useState("");
+  // const [tweetButton, setTweetButton] = useState(true);
 
   const onSubmitTweet = (event) => {
     event.preventDefault();
     const newUserTweetObject = {
+      nameOfUser: "ido",
       text: userTweet,
       timeStamp: Date.now(),
     };
@@ -15,6 +17,7 @@ export default function CreateTweet(props) {
   const changeHandler = (event) => {
     setUserTweet(event.target.value);
   };
+
   return (
     <>
       <form
@@ -24,14 +27,26 @@ export default function CreateTweet(props) {
         }}
       >
         <textarea
-          placeholder={"what is on your mind"}
+          placeholder="what is on your mind"
           onChange={(event) => {
             changeHandler(event);
           }}
           value={userTweet}
         />
-        <div>
-          <input type="submit" value="Tweet" className="tweet-button" />
+        <div className="form-bottom">
+          <p className="error-message">
+            {userTweet.length > 140
+              ? "The tweet can't contain more then 140 chars."
+              : null}
+          </p>
+          <div>
+            <input
+              type="submit"
+              value="Tweet"
+              className="tweet-button"
+              disabled={userTweet.length > 140}
+            />
+          </div>
         </div>
       </form>
     </>

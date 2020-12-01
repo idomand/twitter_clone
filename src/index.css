@@ -13,7 +13,7 @@ code {
 }
 
 .main {
-  background-color: darkcyan;
+  background-color: #15202b;
   height: 100%;
   width: 85%;
   margin: 50px auto;
@@ -26,22 +26,31 @@ code {
   width: 600px;
   height: 180px;
   margin: auto;
-  display: flex;
+  padding-bottom: 10px;
 }
 .tweet-form > textarea {
   color: white;
   border: none;
-  height: 95%;
-  width: 100%;
-  background-color: darkcyan;
+  height: 80%;
+  width: 95%;
+  background-color: #15202b;
+  outline: none;
 }
+
 ::placeholder {
   color: white;
 }
 
-.tweet-form > div {
-  justify-self: flex-end;
-  align-self: flex-end;
+.form-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error-message {
+  color: #721c24;
+  background-color: pink;
+  border-radius: 5px;
+  margin: 0 0 0 20px;
 }
 
 .tweet-button {
@@ -50,4 +59,35 @@ code {
   border: none;
   color: white;
   margin: 5px;
+}
+.tweet-button:disabled {
+  background-color: gray;
+  cursor: no-drop;
+}
+
+.tweet-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.tweet-item {
+  background-color: #343a40;
+  width: 600px;
+  border-radius: 5px;
+  border: none;
+  margin: 20px auto;
+  color: white;
+}
+.tweet-item-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: #6c757d;
+}
+.tweet-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  text-align: left;
+  word-break: break-all;
 }
