@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
 import TweetsList from "./TweetsList";
+import { getTweets } from "../lip/api";
 
 export default function Main() {
   const [tweetList, setTweetList] = useState([]);
+
   useEffect(() => {
-    const storageItems = [];
-    const keys = Object.keys(localStorage);
-    let i = keys.length;
-    while (i--) {
-      storageItems.push(localStorage.getItem(keys[i]));
-    }
-    storageItems.forEach((element) => {
-      setTweetList((tweetList) => {
-        return [JSON.parse(element), ...tweetList];
-      });
-    });
+    const fetchTweets = async () => {
+      const response = await getTweets();
+      // const tweetList = await response.Json();
+      await setTweetList(response.data.tweets);
+    };
+    fetchTweets();
   }, []);
 
   const getUserTweet = (data) => {
