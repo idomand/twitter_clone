@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CreateTweet(props) {
   const [userTweet, setUserTweet] = useState("");
-  // const [tweetButton, setTweetButton] = useState(true);
 
   const onSubmitTweet = (event) => {
     event.preventDefault();
@@ -13,6 +12,10 @@ export default function CreateTweet(props) {
     };
     props.callback(newUserTweetObject);
     setUserTweet("");
+    localStorage.setItem(
+      newUserTweetObject.timeStamp,
+      JSON.stringify(newUserTweetObject)
+    );
   };
   const changeHandler = (event) => {
     setUserTweet(event.target.value);

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #15202b;
 }
 
 code {
@@ -13,7 +14,6 @@ code {
 }
 
 .main {
-  background-color: #15202b;
   height: 100%;
   width: 85%;
   margin: 50px auto;
