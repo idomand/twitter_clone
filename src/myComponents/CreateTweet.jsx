@@ -10,7 +10,7 @@ export default function CreateTweet(props) {
     setTimeout(() => {
       const DateCrated = new Date();
       const newUserTweetObject = {
-        userName: "the ghost in the server",
+        userName: "ido",
         content: userTweet,
         date: DateCrated.toISOString(),
       };
