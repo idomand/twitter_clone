@@ -10,6 +10,7 @@ export default function TweetsList(props) {
   myArray.sort((a, b) => {
     return b - a;
   });
+
   const results = myArray.map((element) => {
     return (
       <li key={element[1]} className="tweet-item">

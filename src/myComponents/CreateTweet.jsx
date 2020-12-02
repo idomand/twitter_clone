@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function CreateTweet(props) {
   const [userTweet, setUserTweet] = useState("");
-
-  const onSubmitTweet = (event) => {
+  const onSubmitTweet = async (event) => {
     event.preventDefault();
-    const newUserTweetObject = {
-      nameOfUser: "ido",
-      text: userTweet,
-      timeStamp: Date.now(),
-    };
-    props.callback(newUserTweetObject);
-    setUserTweet("");
-    localStorage.setItem(
-      newUserTweetObject.timeStamp,
-      JSON.stringify(newUserTweetObject)
-    );
+    await props.setIsLoading((state) => {
+      return !state;
+    });
+    setTimeout(() => {
+      const DateCrated = new Date();
+      const newUserTweetObject = {
+        userName: "the ghost in the server",
+        content: userTweet,
+        date: DateCrated.toISOString(),
+      };
+      props.callback(newUserTweetObject);
+      setUserTweet("");
+      props.setIsLoading(false);
+    }, 500);
   };
   const changeHandler = (event) => {
     setUserTweet(event.target.value);
@@ -47,7 +49,11 @@ export default function CreateTweet(props) {
               type="submit"
               value="Tweet"
               className="tweet-button"
-              disabled={userTweet.length > 140}
+              disabled={
+                userTweet.length > 140 ||
+                userTweet.length === 0 ||
+                props.isLoading
+              }
             />
           </div>
         </div>
