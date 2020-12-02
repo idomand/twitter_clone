@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import TweetItem from "./TweetItem";
+import TweetContext from "../lip/TweetContext";
 
-export default function TweetsList(props) {
+export default function TweetsList() {
   let myArray = [];
-
-  props.tweetList.forEach((element) => {
+  const TweetListWithContext = useContext(TweetContext);
+  TweetListWithContext.forEach((element) => {
     myArray.push([element, element.date]);
   });
   myArray.sort((a, b) => {

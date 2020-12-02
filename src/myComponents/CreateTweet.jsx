@@ -1,30 +1,31 @@
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import TweetContext from "../lip/TweetContext";
 export default function CreateTweet(props) {
   const [userTweet, setUserTweet] = useState("");
+
+  const TweetListWithContext = useContext(TweetContext);
+
   const onSubmitTweet = async (event) => {
     event.preventDefault();
     await props.setIsLoading((state) => {
       return !state;
     });
-    setTimeout(() => {
-      const DateCrated = new Date();
-      const userName = localStorage.getItem("userName");
 
-      const newUserTweetObject = {
-        userName: userName,
-        content: userTweet,
-        date: DateCrated.toISOString(),
-      };
-      props.callback(newUserTweetObject);
-      setUserTweet("");
-      props.setIsLoading(false);
-    }, 500);
+    const DateCrated = new Date();
+    const userName = localStorage.getItem("userName");
+    const newUserTweetObject = {
+      userName: userName,
+      content: userTweet,
+      date: DateCrated.toISOString(),
+    };
+    TweetListWithContext.push(newUserTweetObject);
+    console.log(TweetListWithContext.length);
+    setUserTweet("");
+    props.setIsLoading(false);
   };
   const changeHandler = (event) => {
     setUserTweet(event.target.value);
   };
-
   return (
     <>
       <form

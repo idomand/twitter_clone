@@ -2,22 +2,21 @@ import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
 import TweetsList from "./TweetsList";
 import { getTweets, sentTweet } from "../lip/api";
-
+import { TweetProvider } from "../lip/TweetContext";
 export default function Main(props) {
   const [tweetList, setTweetList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
+    setInterval(() => {
       const fetchTweets = async () => {
         const response = await getTweets();
         await setTweetList(response.data.tweets);
       };
       fetchTweets();
-
       setIsLoading(false);
-    }, 500);
+    }, 5000);
   }, []);
 
   let loader;
@@ -35,13 +34,15 @@ export default function Main(props) {
   };
   return (
     <div className="main">
-      <CreateTweet
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-        callback={getUserTweet}
-      />
-      <div>{loader}</div>
-      <TweetsList tweetList={tweetList} setIsLoading={setIsLoading} />
+      <TweetProvider value={tweetList}>
+        <CreateTweet
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          callback={getUserTweet}
+        />
+        <div>{loader}</div>
+        <TweetsList />
+      </TweetProvider>
     </div>
   );
 }
