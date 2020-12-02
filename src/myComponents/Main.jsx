@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
 import TweetsList from "./TweetsList";
 import { getTweets, sentTweet } from "../lip/api";
+// import NavBar from "./NavBar";
 
 export default function Main() {
   const [tweetList, setTweetList] = useState([]);
@@ -35,6 +36,7 @@ export default function Main() {
   };
   return (
     <div className="main">
+      {/* <NavBar/> */}
       <CreateTweet
         isLoading={isLoading}
         setIsLoading={setIsLoading}

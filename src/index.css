@@ -13,11 +13,34 @@ code {
     monospace;
 }
 
+.navBar {
+  background-color: #343a40;
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.navBar > a {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: #343a40;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navBar > a:hover {
+  background-color: #2d4f72;
+}
+
 .main {
   height: 100%;
   width: 85%;
-  margin: 50px auto;
+  margin: 0px auto;
   padding: 10px;
+  background-color: #15202b;
 }
 
 .tweet-form {
@@ -132,3 +155,5 @@ code {
     transform: rotate(360deg);
   }
 }
+
+/* ---------- */
