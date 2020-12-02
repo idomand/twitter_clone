@@ -9,8 +9,11 @@ export default function CreateTweet(props) {
     });
     setTimeout(() => {
       const DateCrated = new Date();
+      const userName = localStorage.getItem("userName");
+      console.log("localStorage :>> ", localStorage);
+      console.log("userName :>> ", userName);
       const newUserTweetObject = {
-        userName: "ido",
+        userName: userName,
         content: userTweet,
         date: DateCrated.toISOString(),
       };

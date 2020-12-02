@@ -1,15 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "./Main";
 import ProfilePage from "./ProfilePage";
-export default function MyRouter() {
-  const homeFunc = () => {
-    console.log("home");
-  };
 
-  const profileFunc = () => {
-    console.log("profile");
-  };
+export default function MyRouter() {
+  // const [userName,setUserName] = useState('ido Mand')
+
   return (
     <>
       <Router>

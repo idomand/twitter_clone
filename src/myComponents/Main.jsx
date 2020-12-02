@@ -4,7 +4,7 @@ import TweetsList from "./TweetsList";
 import { getTweets, sentTweet } from "../lip/api";
 // import NavBar from "./NavBar";
 
-export default function Main() {
+export default function Main(props) {
   const [tweetList, setTweetList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,7 +36,6 @@ export default function Main() {
   };
   return (
     <div className="main">
-      {/* <NavBar/> */}
       <CreateTweet
         isLoading={isLoading}
         setIsLoading={setIsLoading}
