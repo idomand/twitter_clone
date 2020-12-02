@@ -157,3 +157,22 @@ code {
 }
 
 /* ---------- */
+
+.profile-page {
+  display: inline-block;
+  text-align: start;
+  color: white;
+}
+
+.profile-page-form > form > input {
+  width: 600px;
+  background-color: #15202b;
+  border: white 1px solid;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+}
+.profile-page-input {
+  display: flex;
+  justify-content: flex-end;
+}

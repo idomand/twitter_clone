@@ -3,14 +3,16 @@ import React, { useState } from "react";
 export default function ProfilePage(props) {
   const [userName, setUserName] = useState("");
   const onUserFormSubmit = (event) => {
-    event.preventDefault();
-    localStorage.setItem("userName", userName);
-    console.log("localStorage :>> ", localStorage);
+    if (userName) {
+      event.preventDefault();
+      localStorage.setItem("userName", userName);
+      setUserName("");
+    }
   };
   return (
-    <div className="profilePage">
+    <div className="profile-page">
       <h1>profile</h1>
-      <div>
+      <div className="profile-page-form">
         <h3>User Name</h3>
         <form
           onSubmit={(event) => {
@@ -20,11 +22,19 @@ export default function ProfilePage(props) {
           <input
             type="text"
             value={userName}
+            placeholder="Enter User Name"
             onChange={(event) => {
               setUserName(event.target.value);
             }}
           />
-          <input type="submit" name="save" value="save" />
+          <div className="profile-page-input">
+            <input
+              className="tweet-button"
+              type="submit"
+              name="save"
+              value="save"
+            />
+          </div>
         </form>
       </div>
     </div>

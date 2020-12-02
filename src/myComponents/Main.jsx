@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
 import TweetsList from "./TweetsList";
 import { getTweets, sentTweet } from "../lip/api";
-// import NavBar from "./NavBar";
 
 export default function Main(props) {
   const [tweetList, setTweetList] = useState([]);
