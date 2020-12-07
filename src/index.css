@@ -19,6 +19,14 @@ code {
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 10px;
+  color: white;
+  align-self: center;
+}
+.navBar > p {
+  align-self: center;
+  margin: 0 0 0 30px;
+  border: white 1px solid;
+  padding: 3px;
 }
 
 .navBar > a {
@@ -175,4 +183,9 @@ code {
 .profile-page-input {
   display: flex;
   justify-content: flex-end;
+}
+
+.my-form {
+  max-width: 500px;
+  margin: auto;
 }

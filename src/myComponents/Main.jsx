@@ -28,7 +28,7 @@ export default function Main() {
     setInterval(() => {
       fetchTweets();
       setIsLoading(false);
-    }, 5000);
+    }, 2000);
   }, []);
 
   let loader;
