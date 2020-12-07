@@ -1,18 +1,17 @@
-import axios from "axios";
+import fireBase, { fireStoreApp } from "../fireBase";
 
-const baseUrl = `https://micro-blogging-dot-full-stack-course-services.ew.r.appspot.com/`;
-
-export function getTweets() {
-  return axios.get(`${baseUrl}/tweet`);
-}
+let fireStoreDataBase = fireBase.firestore(fireStoreApp);
+const ref = fireBase.firestore().collection("tweets");
 
 export function sentTweet(tweet) {
-  try {
-    // throw new Error();
-    return axios.post(`${baseUrl}tweet`, tweet);
-  } catch (error) {
-    console.log("error", error);
-
-    return error;
-  }
+  fireStoreDataBase
+    .collection("tweets")
+    .add({
+      content: tweet.content,
+      date: tweet.date,
+      userName: tweet.userName,
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
 }

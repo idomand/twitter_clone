@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
 import TweetsList from "./TweetsList";
-import { getTweets, sentTweet } from "../lip/api";
 import { TweetProvider } from "../lip/TweetContext";
-export default function Main(props) {
+import fireBase, { fireStoreApp } from "../fireBase";
+
+export default function Main() {
   const [tweetList, setTweetList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  let fireStoreDataBase = fireBase.firestore(fireStoreApp);
+  // const ref = fireBase.firestore().collection("tweets");
+
   useEffect(() => {
     setIsLoading(true);
+    const fetchTweets = async () => {
+      let myItems = [];
+      fireStoreDataBase
+        .collection("tweets")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            myItems.push(doc.data());
+          });
+          setTweetList(myItems);
+        });
+    };
     setInterval(() => {
-      const fetchTweets = async () => {
-        const response = await getTweets();
-        await setTweetList(response.data.tweets);
-      };
       fetchTweets();
       setIsLoading(false);
     }, 5000);
@@ -26,20 +38,10 @@ export default function Main(props) {
     loader = null;
   }
 
-  const getUserTweet = (data) => {
-    sentTweet(data);
-    setTweetList((tweetList) => {
-      return [data, ...tweetList];
-    });
-  };
   return (
     <div className="main">
       <TweetProvider value={tweetList}>
-        <CreateTweet
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          callback={getUserTweet}
-        />
+        <CreateTweet isLoading={isLoading} setIsLoading={setIsLoading} />
         <div>{loader}</div>
         <TweetsList />
       </TweetProvider>

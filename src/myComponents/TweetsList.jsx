@@ -8,8 +8,10 @@ export default function TweetsList() {
   TweetListWithContext.forEach((element) => {
     myArray.push([element, element.date]);
   });
+  console.log("myArray :>> ", myArray);
+
   myArray.sort((a, b) => {
-    return b - a;
+    return b[1] - a[1];
   });
 
   const results = myArray.map((element) => {
