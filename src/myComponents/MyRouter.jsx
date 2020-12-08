@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 import Login from "./Login";
 import Main from "./Main";
 import ProfilePage from "./ProfilePage";
@@ -9,7 +14,6 @@ import { Button } from "react-bootstrap";
 export default function MyRouter() {
   const { currentUser, logOut } = useAuth();
   const handleLogOut = async () => {
-    console.log("on log out func");
     await logOut();
   };
   return (
@@ -25,12 +29,20 @@ export default function MyRouter() {
               log out
             </Button>
           )}
-          {currentUser && <p> "hello " + {currentUser.email}</p>}
+          {currentUser && <p> hello {currentUser.email}</p>}
         </div>
         <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
+          {currentUser ? (
+            <Route exact path="/">
+              {" "}
+              <Main />{" "}
+            </Route>
+          ) : (
+            <Route exact path="/">
+              {" "}
+              <Login />{" "}
+            </Route>
+          )}
           <Route exact path="/profilePage">
             <ProfilePage />
           </Route>

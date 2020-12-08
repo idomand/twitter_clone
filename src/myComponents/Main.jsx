@@ -9,7 +9,6 @@ export default function Main() {
   const [isLoading, setIsLoading] = useState(false);
 
   let fireStoreDataBase = fireBase.firestore(fireStoreApp);
-  // const ref = fireBase.firestore().collection("tweets");
 
   useEffect(() => {
     setIsLoading(true);

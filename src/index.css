@@ -16,7 +16,6 @@ code {
 .navBar {
   background-color: #343a40;
   display: flex;
-  border-radius: 10px;
   margin-bottom: 20px;
   padding: 10px;
   color: white;
@@ -100,6 +99,8 @@ code {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column-reverse;
 }
 .tweet-item {
   background-color: #343a40;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ProfilePage(props) {
+export default function ProfilePage() {
   const [userName, setUserName] = useState("");
   const onUserFormSubmit = (event) => {
     if (userName) {

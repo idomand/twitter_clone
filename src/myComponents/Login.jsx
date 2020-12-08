@@ -1,23 +1,18 @@
-// import auth from "../fireBase";
 import React, { useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../lip/AuthContext";
 import { useHistory } from "react-router-dom";
-//   ========
 
 //   ========
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { logIn } = useAuth();
+  const { logIn, logInWithGoogle } = useAuth();
   const history = useHistory();
-  //   ========
 
-  //   ========
   const onSubmitForm = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -28,6 +23,10 @@ export default function Login() {
       setError("can't log in");
     }
     setIsLoading(false);
+  };
+
+  const logInWithGoogleUser = () => {
+    logInWithGoogle();
   };
 
   return (
@@ -69,7 +68,16 @@ export default function Login() {
             <Button variant="primary" type="submit" disabled={isLoading}>
               LogIn
             </Button>
+            <p className="border-top border-bottom mt-2">or</p>
           </Form>
+          <Button
+            variant="primary"
+            type="submit"
+            disabled={isLoading}
+            onClick={logInWithGoogleUser}
+          >
+            Log in With Google Account
+          </Button>
         </Card.Body>
       </Card>
     </>

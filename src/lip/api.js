@@ -1,7 +1,6 @@
 import fireBase, { fireStoreApp } from "../fireBase";
 
 let fireStoreDataBase = fireBase.firestore(fireStoreApp);
-const ref = fireBase.firestore().collection("tweets");
 
 export function sentTweet(tweet) {
   fireStoreDataBase

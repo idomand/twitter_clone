@@ -1,8 +1,6 @@
-// import auth from "../fireBase";
 import React, { useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../lip/AuthContext";
-//   ========
 
 //   ========
 
@@ -12,10 +10,8 @@ export default function SignUp() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signUp, currentUser } = useAuth();
-  //   ========
-  // console.log("useAuth :>> ", useAuth);
-  //   ========
+  const { signUpWithEmail } = useAuth();
+
   const onSubmitForm = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -24,9 +20,7 @@ export default function SignUp() {
       return setError("passwords don't match");
     }
     try {
-      console.log("email :>> ", email);
-      console.log("password :>> ", password);
-      await signUp(email, password);
+      await signUpWithEmail(email, password);
     } catch {
       setError("can't sign up");
     }
