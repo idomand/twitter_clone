@@ -1,42 +1,53 @@
 import React, { useState } from "react";
+import { useAuth } from "../lip/AuthContext";
+import { Form, Button, Card, Alert } from "react-bootstrap";
+
+// ==========
 
 export default function ProfilePage() {
+  const { currentUser, updateUser } = useAuth();
   const [userName, setUserName] = useState("");
-  const onUserFormSubmit = (event) => {
+  // let currentUserName = currentUser.displayName;
+  // ==========
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
     if (userName) {
-      event.preventDefault();
-      localStorage.setItem("userName", userName);
+      updateUser(userName);
       setUserName("");
     }
   };
   return (
-    <div className="profile-page">
-      <h1>profile</h1>
-      <div className="profile-page-form">
-        <h3>User Name</h3>
-        <form
-          onSubmit={(event) => {
-            onUserFormSubmit(event);
-          }}
-        >
-          <input
-            type="text"
-            value={userName}
-            placeholder="Enter User Name"
-            onChange={(event) => {
-              setUserName(event.target.value);
+    <>
+      <Card className="my-form">
+        <Card.Title>
+          <strong>Update User Profile</strong>
+        </Card.Title>
+        <Card.Body>
+          <Form
+            onSubmit={(event) => {
+              onSubmitForm(event);
             }}
-          />
-          <div className="profile-page-input">
-            <input
-              className="tweet-button"
-              type="submit"
-              name="save"
-              value="save"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
+          >
+            <Form.Group controlId="formUserName">
+              <Form.Label>User Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter New Name"
+                value={userName}
+                required
+                onChange={(event) => {
+                  setUserName(event.target.value);
+                }}
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit Changes
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </>
   );
 }

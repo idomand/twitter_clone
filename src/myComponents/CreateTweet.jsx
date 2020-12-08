@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import { sentTweet } from "../lip/api";
-
+import { useAuth } from "../lip/AuthContext";
 import TweetContext from "../lip/TweetContext";
 
 export default function CreateTweet(props) {
+  const { currentUser } = useAuth();
   const [userTweet, setUserTweet] = useState("");
 
   const TweetListWithContext = useContext(TweetContext);
@@ -14,9 +15,9 @@ export default function CreateTweet(props) {
       return !state;
     });
     const DateCrated = new Date();
-    const userName = localStorage.getItem("userName");
+    // const userName = localStorage.getItem("userName");
     const newUserTweetObject = {
-      userName: userName,
+      userName: currentUser.displayName,
       content: userTweet,
       date: DateCrated.toISOString(),
     };

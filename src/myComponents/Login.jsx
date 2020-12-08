@@ -5,6 +5,9 @@ import { useHistory } from "react-router-dom";
 
 //   ========
 
+
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +35,7 @@ export default function Login() {
   return (
     <>
       <Card className="my-form">
-        <Card.Title>this is the log in page</Card.Title>
+        <Card.Title><strong>Log In</strong></Card.Title>
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form
@@ -66,7 +69,7 @@ export default function Login() {
               />
             </Form.Group>
             <Button variant="primary" type="submit" disabled={isLoading}>
-              LogIn
+              Log In
             </Button>
             <p className="border-top border-bottom mt-2">or</p>
           </Form>
@@ -76,7 +79,7 @@ export default function Login() {
             disabled={isLoading}
             onClick={logInWithGoogleUser}
           >
-            Log in With Google Account
+            Log In With Google Account
           </Button>
         </Card.Body>
       </Card>

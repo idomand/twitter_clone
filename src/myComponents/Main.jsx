@@ -7,7 +7,6 @@ import fireBase, { fireStoreApp } from "../fireBase";
 export default function Main() {
   const [tweetList, setTweetList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
   let fireStoreDataBase = fireBase.firestore(fireStoreApp);
 
   useEffect(() => {
@@ -28,6 +27,9 @@ export default function Main() {
       fetchTweets();
       setIsLoading(false);
     }, 2000);
+    return () => {
+      return;
+    };
   }, []);
 
   let loader;

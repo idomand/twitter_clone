@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../lip/AuthContext";
+import { useHistory } from "react-router-dom";
 
 //   ========
 
 export default function SignUp() {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signUpWithEmail } = useAuth();
+  const { signUpWithEmail, updateUser } = useAuth();
+  const history = useHistory();
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
@@ -21,16 +24,25 @@ export default function SignUp() {
     }
     try {
       await signUpWithEmail(email, password);
+      await updateUser(userName);
+      history.push("/login");
     } catch {
       setError("can't sign up");
+    } finally {
+      setIsLoading(false);
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setPasswordConfirmation("");
     }
-    setIsLoading(false);
   };
 
   return (
     <>
       <Card className="my-form">
-        <Card.Title>this is the sign up page</Card.Title>
+        <Card.Title>
+          <strong>Sign Up</strong>
+        </Card.Title>
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form
@@ -38,6 +50,19 @@ export default function SignUp() {
               onSubmitForm(event);
             }}
           >
+            <Form.Group controlId="formUserName">
+              <Form.Label>User Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter User Name"
+                value={userName}
+                required
+                onChange={(event) => {
+                  setUserName(event.target.value);
+                }}
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control

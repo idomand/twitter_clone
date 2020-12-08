@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth } from "../lip/AuthContext";
 
 export default function TweetItem(props) {
   return (

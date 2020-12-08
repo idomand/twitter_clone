@@ -14,14 +14,27 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
-
-    return unsubscribe;
+    // return unsubscribe;
   }, []);
 
   const signUpWithEmail = (email, password) => {
+    setCurrentUser("");
     return auth.createUserWithEmailAndPassword(email, password);
   };
-
+  const updateUser = (name) => {
+    var user = firebase.auth().currentUser;
+    user
+      .updateProfile({
+        displayName: name,
+        photoURL: "https://example.com/jane-q-user/profile.jpg",
+      })
+      .then(function () {
+        // Update successful.
+      })
+      .catch(function (error) {
+        // An error happened.
+      });
+  };
   const logInWithGoogle = () => {
     firebase
       .auth()
@@ -59,6 +72,7 @@ export function AuthProvider({ children }) {
     logInWithGoogle,
     logIn,
     logOut,
+    updateUser,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

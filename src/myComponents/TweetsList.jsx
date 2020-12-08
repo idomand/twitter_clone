@@ -5,6 +5,7 @@ import TweetContext from "../lip/TweetContext";
 export default function TweetsList() {
   let myArray = [];
   const TweetListWithContext = useContext(TweetContext);
+
   TweetListWithContext.forEach((element) => {
     myArray.push([element, element.date]);
   });
