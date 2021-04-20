@@ -23,3 +23,7 @@ export default function TweetsList() {
   });
   return <ul className="tweet-list">{results}</ul>;
 }
+// content: "asdfasdf"
+// date: "2020-12-08T13:15:34.929Z"
+// id: "Z8Ie2rq5BHQduE3G65uH"
+// userName: "321"

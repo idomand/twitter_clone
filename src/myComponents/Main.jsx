@@ -2,10 +2,21 @@ import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
 import TweetsList from "./TweetsList";
 import { TweetProvider } from "../lip/TweetContext";
-import fireBase, { fireStoreApp } from "../fireBase";
+import fireBase, { fireStoreApp, firestore } from "../fireBase";
+
+/* //!===NEW CODE---START */
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
+/* //!===NEW CODE---END */
 
 export default function Main() {
+  /* //!===NEW CODE---START */
+  const messagesRef = firestore.collection("tweets");
+  const query = messagesRef.orderBy("date").limit(250);
+  const [allTweets] = useCollectionData(query, { idField: "id" });
+  /* //!===NEW CODE---END */
   const [tweetList, setTweetList] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   let fireStoreDataBase = fireBase.firestore(fireStoreApp);
 
@@ -20,13 +31,14 @@ export default function Main() {
           querySnapshot.forEach((doc) => {
             myItems.push(doc.data());
           });
+          console.log("myItems :>> ", myItems);
           setTweetList(myItems);
         });
     };
     setInterval(() => {
       fetchTweets();
       setIsLoading(false);
-    }, 2000);
+    }, 5000);
     return () => {
       return;
     };
