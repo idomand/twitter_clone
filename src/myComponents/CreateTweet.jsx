@@ -38,7 +38,7 @@ export default function CreateTweet(props) {
         }}
       >
         <textarea
-          placeholder="what is on your mind"
+          placeholder="what's on your mind"
           onChange={(event) => {
             changeHandler(event);
           }}

@@ -6,12 +6,14 @@ import ProfilePage from "./ProfilePage";
 import SignUp from "./SignUp";
 import { useAuth } from "../lip/AuthContext";
 import { Button } from "react-bootstrap";
-// =============
+//! =============
+
 export default function MyRouter() {
   const { currentUser, logOut } = useAuth();
   const handleLogOut = async () => {
     await logOut();
   };
+  console.log("currentUser :>> ", currentUser);
 
   return (
     <>
