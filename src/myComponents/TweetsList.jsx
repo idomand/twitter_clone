@@ -13,6 +13,7 @@ export default function TweetsList() {
   myArray.sort((a, b) => {
     return a[1] - b[1];
   });
+
   const results = myArray.map((element) => {
     return (
       <li key={element[1]} className="tweet-item">
