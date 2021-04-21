@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import Main from "./Main";
@@ -13,7 +13,6 @@ export default function MyRouter() {
   const handleLogOut = async () => {
     await logOut();
   };
-  console.log("currentUser :>> ", currentUser);
 
   return (
     <>

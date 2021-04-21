@@ -1,15 +1,16 @@
 import React from "react";
-import { useAuth } from "../lip/AuthContext";
+import dayjs from "dayjs";
 
-export default function TweetItem(props) {
+export default function TweetItem({ text, userName, createdAt }) {
   return (
     <>
       <div className="tweet-item-top">
-        <div>{props.element.userName}</div>
-        <div>{props.element.date}</div>
+        <div>{userName}</div>
+        {/* <div>{createdAt}</div> */}
+        <div>{dayjs(createdAt).format("D.M.YY H:m:s")}</div>
       </div>
       <div className="tweet-item-bottom">
-        <p>{props.element.content}</p>
+        <p>{text}</p>
       </div>
     </>
   );

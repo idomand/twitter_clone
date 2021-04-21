@@ -1,31 +1,33 @@
 import React, { useState, useContext } from "react";
+import dayjs from "dayjs";
 import { sentTweet } from "../lip/api";
 import { useAuth } from "../lip/AuthContext";
 import TweetContext from "../lip/TweetContext";
 
-export default function CreateTweet(props) {
+export default function CreateTweet({ setIsLoading, isLoading }) {
   const { currentUser } = useAuth();
   const [userTweet, setUserTweet] = useState("");
 
   const TweetListWithContext = useContext(TweetContext);
-
   const onSubmitTweet = async (event) => {
     event.preventDefault();
-    await props.setIsLoading((state) => {
+    await setIsLoading((state) => {
       return !state;
     });
-    const DateCrated = new Date();
-    // const userName = localStorage.getItem("userName");
+    const createdAt = dayjs().unix();
+    console.log("createdAt :>> ", createdAt);
     const newUserTweetObject = {
       userName: currentUser.displayName,
-      content: userTweet,
-      date: DateCrated.toISOString(),
+      text: userTweet,
+      createdAt: createdAt,
     };
+
     sentTweet(newUserTweetObject);
     TweetListWithContext.push(newUserTweetObject);
     setUserTweet("");
-    props.setIsLoading(false);
+    setIsLoading(false);
   };
+
   const changeHandler = (event) => {
     setUserTweet(event.target.value);
   };
@@ -56,9 +58,7 @@ export default function CreateTweet(props) {
               value="Tweet"
               className="tweet-button"
               disabled={
-                userTweet.length > 140 ||
-                userTweet.length === 0 ||
-                props.isLoading
+                userTweet.length > 140 || userTweet.length === 0 || isLoading
               }
             />
           </div>

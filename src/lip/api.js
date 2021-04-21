@@ -1,13 +1,11 @@
-import fireBase, { fireStoreApp } from "../fireBase";
-
-let fireStoreDataBase = fireBase.firestore(fireStoreApp);
+import { firestore } from "../fireBase";
 
 export function sentTweet(tweet) {
-  fireStoreDataBase
+  firestore
     .collection("tweets")
     .add({
-      content: tweet.content,
-      date: tweet.date,
+      text: tweet.text,
+      createdAt: tweet.createdAt,
       userName: tweet.userName,
     })
     .catch(function (error) {

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useAuth } from "../lip/AuthContext";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 
 // ==========
 
 export default function ProfilePage() {
-  const { currentUser, updateUser } = useAuth();
+  const { updateUser } = useAuth();
   const [userName, setUserName] = useState("");
   // let currentUserName = currentUser.displayName;
   // ==========
