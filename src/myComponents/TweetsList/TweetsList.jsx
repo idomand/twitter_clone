@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import TweetItem from "./TweetItem";
-import TweetContext from "../lip/TweetContext";
+import TweetItem from "../TweetItem/TweetItem";
+import TweetContext from "../../lip/TweetContext";
 import dayjs from "dayjs";
-
+import "./TweetsList.css";
 export default function TweetsList() {
   let myArray = [];
   const TweetListWithContext = useContext(TweetContext);
@@ -16,7 +16,7 @@ export default function TweetsList() {
 
   const results = myArray.map((element) => {
     return (
-      <li key={element[1]} className="tweet-item">
+      <li key={element[1]}>
         <TweetItem
           text={element[0].text}
           createdAt={element[0].createdAt}

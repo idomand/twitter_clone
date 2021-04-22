@@ -8,6 +8,7 @@ export default function CreateTweet({ setIsLoading, isLoading }) {
   const { currentUser } = useAuth();
   const [userTweet, setUserTweet] = useState("");
 
+
   const TweetListWithContext = useContext(TweetContext);
   const onSubmitTweet = async (event) => {
     event.preventDefault();
@@ -15,7 +16,6 @@ export default function CreateTweet({ setIsLoading, isLoading }) {
       return !state;
     });
     const createdAt = dayjs().unix();
-    console.log("createdAt :>> ", createdAt);
     const newUserTweetObject = {
       userName: currentUser.displayName,
       text: userTweet,

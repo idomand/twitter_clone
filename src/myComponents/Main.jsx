@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import CreateTweet from "./CreateTweet";
-import TweetsList from "./TweetsList";
+import TweetsList from "./TweetsList/TweetsList";
 import { TweetProvider } from "../lip/TweetContext";
 import { firestore } from "../fireBase";
 
 export default function Main() {
   const [tweetList, setTweetList] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(true);
@@ -21,25 +20,16 @@ export default function Main() {
           });
           setTweetList(myItems);
         });
-
-      // console.log("tweetList :>> ", tweetList);
     };
-    setInterval(() => {
-      fetchTweets();
-      setIsLoading(false);
-    }, 5000);
-    return () => {
-      return;
-    };
-  }, []);
-
+    fetchTweets();
+    setIsLoading(false);
+  }, [tweetList]);
   let loader;
   if (isLoading) {
     loader = <div className="loader"></div>;
   } else {
     loader = null;
   }
-
   return (
     <div className="main">
       <TweetProvider value={tweetList}>

@@ -1,0 +1,32 @@
+.tweet-item {
+  background-color: #343a40;
+  width: 600px;
+  border-radius: 5px;
+  border: none;
+  margin: 20px auto;
+  color: white;
+
+  /*   display: grid;
+  grid-template-areas:
+    "img name name createdAt"
+    "img text text text";
+ */
+}
+
+.profile-picture-div {
+  grid-area: img;
+}
+
+.tweet-item-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: #6c757d;
+}
+.tweet-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  text-align: left;
+  word-break: break-all;
+}
