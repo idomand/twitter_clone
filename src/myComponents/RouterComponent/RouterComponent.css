@@ -1,0 +1,28 @@
+.navBar {
+  background-color: #343a40;
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  color: white;
+  align-self: center;
+}
+.navBar > p {
+  align-self: center;
+  margin: 0 0 0 30px;
+  border: white 1px solid;
+  padding: 3px;
+}
+
+.navBar > a {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: #343a40;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.navBar > a:hover {
+  background-color: #2d4f72;
+}

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import dayjs from "dayjs";
-import { sentTweet } from "../lip/api";
-import { useAuth } from "../lip/AuthContext";
-import TweetContext from "../lip/TweetContext";
-
+import { sentTweet } from "../../lip/api";
+import { useAuth } from "../../lip/AuthContext";
+import TweetContext from "../../lip/TweetContext";
+import './CreateTweet.css'
 export default function CreateTweet({ setIsLoading, isLoading }) {
   const { currentUser } = useAuth();
   const [userTweet, setUserTweet] = useState("");

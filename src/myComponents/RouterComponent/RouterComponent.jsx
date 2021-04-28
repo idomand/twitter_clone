@@ -1,14 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from "./Login";
-import Main from "./Main";
-import ProfilePage from "./ProfilePage";
-import SignUp from "./SignUp";
-import { useAuth } from "../lip/AuthContext";
+import Login from "../Login/Login";
+import Main from "../Main/Main";
+import ProfilePage from "../ProfilePage/ProfilePage";
+import SignUp from "../SignUp/SignUp";
+import { useAuth } from "../../lip/AuthContext";
 import { Button } from "react-bootstrap";
-//! =============
-
-export default function MyRouter() {
+import './RouterComponent.css'
+export default function RouterComponent() {
   const { currentUser, logOut } = useAuth();
   const handleLogOut = async () => {
     await logOut();

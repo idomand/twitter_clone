@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import MyRouter from "./myComponents/MyRouter";
+import RouterComponent from "./myComponents/RouterComponent/RouterComponent";
 
 import { AuthProvider } from "./lip/AuthContext";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <AuthProvider>
       <div className="App">
-        <MyRouter />
+        <RouterComponent />
       </div>
     </AuthProvider>
   );

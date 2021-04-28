@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useAuth } from "../lip/AuthContext";
+import { useAuth } from "../../lip/AuthContext";
 import { Form, Button, Card } from "react-bootstrap";
-
+import './ProfilePage.css'
 // ==========
 
 export default function ProfilePage() {

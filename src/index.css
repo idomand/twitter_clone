@@ -14,88 +14,11 @@ code {
     monospace;
 }
 
-.navBar {
-  background-color: #343a40;
-  display: flex;
-  margin-bottom: 20px;
-  padding: 10px;
-  color: white;
-  align-self: center;
-}
-.navBar > p {
-  align-self: center;
-  margin: 0 0 0 30px;
-  border: white 1px solid;
-  padding: 3px;
-}
-
-.navBar > a {
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  background-color: #343a40;
-  color: white;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-}
-.navBar > a:hover {
-  background-color: #2d4f72;
-}
-
-.main {
-  height: 100%;
-  width: 85%;
-  margin: 0px auto;
-  padding: 10px;
-  background-color: #15202b;
-}
-
-.tweet-form {
-  border: 2px solid white;
-  border-radius: 5px;
-  width: 600px;
-  height: 180px;
+/* //!======general CSS===== */
+.my-form {
+  max-width: 500px;
   margin: auto;
-  padding-bottom: 10px;
 }
-.tweet-form > textarea {
-  color: white;
-  border: none;
-  height: 80%;
-  width: 95%;
-  background-color: #15202b;
-  outline: none;
-}
-
-::placeholder {
-  color: white;
-}
-
-.form-bottom {
-  display: flex;
-  justify-content: space-between;
-}
-
-.error-message {
-  color: #721c24;
-  background-color: pink;
-  border-radius: 5px;
-  margin: 0 0 0 20px;
-}
-
-.tweet-button {
-  background-color: #007bff;
-  border-radius: 4px;
-  border: none;
-  color: white;
-  margin: 5px;
-}
-.tweet-button:disabled {
-  background-color: gray;
-  cursor: no-drop;
-}
-
 
 .display {
   display: block;
@@ -103,65 +26,9 @@ code {
 .hide {
   display: none;
 }
-
-.loader {
-  margin: auto;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid blue;
-  border-right: 16px solid green;
-  border-bottom: 16px solid red;
-  border-left: 16px solid pink;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 0.3s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+/* //!======general CSS===== */
 
 /* ---------- */
-
-.profile-page {
-  display: inline-block;
-  text-align: start;
-  color: white;
-}
-
-.profile-page-form > form > input {
-  width: 600px;
-  background-color: #15202b;
-  border: white 1px solid;
-  padding: 15px;
-  border-radius: 5px;
-  color: white;
-}
-
-.profile-page-input {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.my-form {
-  max-width: 500px;
-  margin: auto;
-}
 
 @media screen and (max-width: 600px) {
   .tweet-form {
