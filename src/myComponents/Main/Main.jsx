@@ -3,7 +3,8 @@ import CreateTweet from "../CreateTweet/CreateTweet";
 import TweetsList from "../TweetsList/TweetsList";
 import { TweetProvider } from "../../lip/TweetContext";
 import { firestore } from "../../fireBase";
-import './Main.css'
+import "./Main.css";
+
 export default function Main() {
   const [tweetList, setTweetList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,12 +25,14 @@ export default function Main() {
     fetchTweets();
     setIsLoading(false);
   }, [tweetList]);
+
   let loader;
   if (isLoading) {
     loader = <div className="loader"></div>;
   } else {
     loader = null;
   }
+
   return (
     <div className="main">
       <TweetProvider value={tweetList}>

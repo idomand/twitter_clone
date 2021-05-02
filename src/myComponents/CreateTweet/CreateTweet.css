@@ -42,3 +42,11 @@
   background-color: gray;
   cursor: no-drop;
 }
+@media screen and (max-width: 600px) {
+  .tweet-form {
+    width: 100%;
+  }
+  .tweet-item {
+    width: 100%;
+  }
+}

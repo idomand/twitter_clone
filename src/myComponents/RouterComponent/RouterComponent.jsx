@@ -5,29 +5,15 @@ import Main from "../Main/Main";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import SignUp from "../SignUp/SignUp";
 import { useAuth } from "../../lip/AuthContext";
-import { Button } from "react-bootstrap";
-import './RouterComponent.css'
+import NavBar from "../NavBar/NavBar";
+import "./RouterComponent.css";
 export default function RouterComponent() {
-  const { currentUser, logOut } = useAuth();
-  const handleLogOut = async () => {
-    await logOut();
-  };
+  const { currentUser } = useAuth();
 
   return (
     <>
       <Router>
-        <div className="navBar">
-          <Link to="/">Home</Link>
-          <Link to="/profilePage">Profile</Link>
-          <Link to="/signUp">Sign Up</Link>
-          <Link to="/login">Login</Link>
-          {currentUser && (
-            <Button variant="link" onClick={handleLogOut}>
-              log out
-            </Button>
-          )}
-          {currentUser && <p> hello {currentUser.displayName}</p>}
-        </div>
+        <NavBar />
         <Switch>
           {currentUser ? (
             <Route exact path="/">

@@ -1,6 +1,6 @@
 .main {
-  height: 100%;
-  width: 85%;
+  height: 90vh;
+  /* width: 85%; */
   margin: 0px auto;
   padding: 10px;
   background-color: #15202b;
@@ -34,5 +34,17 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tweet-form {
+    width: 100%;
+  }
+  .tweet-item {
+    width: 100%;
+  }
+  .main {
+    width: 100%;
   }
 }
