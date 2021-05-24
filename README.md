@@ -20,7 +20,7 @@ yarn install
 
 after that, opening the code in your browser of choice will result in this image:
 
-![](img/Stock_Exchange_Search_Engine.PNG)
+![](public/Twitter_clone_login.PNG)
 
 from this point you can login the platform using your google account or using an email and password combo.
 
